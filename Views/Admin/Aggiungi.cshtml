@@ -6,23 +6,26 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<form asp-action="Aggiungi" method="post" class="mt-4">
+<form asp-action="Aggiungi" method="post" class="mt-4" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="Nome">Nome</label>
-        <input type="text" class="form-control" id="Nome" name="Nome" required />
+        <label asp-for="Nome">Nome</label>
+        <input asp-for="Nome" class="form-control" />
     </div>
     <div class="form-group">
-        <label for="Prezzo">Prezzo</label>
-        <input type="text" class="form-control" id="Prezzo" name="Prezzo" required />
+        <label asp-for="Prezzo">Prezzo</label>
+        <input asp-for="Prezzo" class="form-control" />
     </div>
     <div class="form-group">
-        <label for="Descrizione">Descrizione</label>
-        <input type="text" class="form-control" id="Descrizione" name="Descrizione" required />
+        <label asp-for="Descrizione">Descrizione</label>
+        <input asp-for="Descrizione" class="form-control" />
     </div>
-    <div class="form-group form-check my-3">
-        <input type="checkbox" class="form-check-input" id="VisibileInHomePage" name="VisibileInHomePage"
-            value="true" />
-        <label class="form-check-label" for="VisibileInHomePage">Visibile in Home</label>
+    <div class="form-group form-check">
+        <input asp-for="VisibileInHomePage" class="form-check-input" />
+        <label asp-for="VisibileInHomePage" class="form-check-label">Visibile in Home</label>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImmagineCopertinaFile">Immagine Copertina</label>
+        <input asp-for="ImmagineCopertinaFile" type="file" class="form-control" />
     </div>
     <button type="submit" class="btn btn-primary">
         Aggiungi Articolo

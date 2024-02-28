@@ -14,6 +14,9 @@
             <th>Nome</th>
             <th>Prezzo</th>
             <th>Descrizione</th>
+            <th>Immagine Copertina</th>
+            @* <th>Immagine Aggiuntiva 1</th>
+            <th>Immagine Aggiungtiva 2</th> *@
             <th>Vai alla pagina di dettaglio</th>
         </tr>
     </thead>
@@ -33,6 +36,18 @@
                     <td>
                         @articolo.Descrizione
                     </td>
+                    <td>
+                        <img src="@Url.Content(articolo.ImmagineCopertinaUrl)" alt="Immagine Copertina"
+                            class="img-fluid img-thumbnail" width="200" />
+                    </td>
+                    @* <td>
+            <img src="@Url.Content(articolo.ImmagineCopertinaUrl)" alt="Immagine Aggiungtiva 1"
+            class="img-fluid img-thumbnail" width="200" />
+            </td>
+            <td>
+            <img src="@Url.Content(articolo.ImmagineAggiuntivaUrl2)" alt="Immagine Aggiungtiva 2"
+            class="img-fluid img-thumbnail" width="200" />
+            </td> *@
                     <td>
                         <a href="@Url.Action("Dettaglio", "Home", new {id = articolo.Id})" class="btn btn-info">Dettagli</a>
                     </td>
