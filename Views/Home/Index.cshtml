@@ -1,0 +1,48 @@
+﻿@model List<ScarpeCoEpicode.Models.Articolo>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Elenco Articoli</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Prezzo</th>
+            <th>Descrizione</th>
+            <th>Vai alla pagina di dettaglio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var articolo in Model)
+            {
+                <tr>
+                    <td>
+                        @articolo.Id
+                    </td>
+                    <td>
+                        @articolo.Nome
+                    </td>
+                    <td>
+                        @articolo.Prezzo
+                    </td>
+                    <td>
+                        @articolo.Descrizione
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Dettaglio", "Home", new {id = articolo.Id})" class="btn btn-info">Dettagli</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+    <p>Nessun articolo disponibile.</p>
+}

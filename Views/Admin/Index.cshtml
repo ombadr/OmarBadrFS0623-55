@@ -1,0 +1,68 @@
+@model List<ScarpeCoEpicode.Models.Articolo>
+@{
+    ViewData["Title"] = "Amministrazione";
+}
+
+<h2>Gestione Articoli Amministrazione</h2>
+
+<a href="@Url.Action("Aggiungi", "Admin")" class="btn btn-dark">Aggiungi nuovo articolo</a>
+
+@if (Model.Any())
+{
+    <table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Prezzo</th>
+            <th>Descrizione</th>
+            <th>Vai alla pagina di dettaglio</th>
+            <th>Nascondi</th>
+            <th>Elimina</th>
+            <th>Modifica Articolo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var articolo in Model)
+            {
+                <tr>
+                    <td>
+                        @articolo.Id
+                    </td>
+                    <td>
+                        @articolo.Nome
+                    </td>
+                    <td>
+                        @articolo.Prezzo
+                    </td>
+                    <td>
+                        @articolo.Descrizione
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Dettaglio", "Admin", new {id = articolo.Id})" class="btn btn-info">Dettagli</a>
+                    </td>
+                    <td>
+                        <form action="@Url.Action("NascondiArticolo", "Admin", new {id = articolo.Id} )" method="post">
+                            <button type="submit" class="btn btn-warning">@(articolo.VisibileInHomePage ? "Nascondi" :
+                        "Mostra")</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="@Url.Action("EliminaArticolo", "Admin", new {id = articolo.Id} )" method="post">
+                            <button type="submit" class="btn btn-danger">Elimina</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a asp-action="Modifica" asp-controller="Admin" asp-route-id="@articolo.Id"
+                            class="btn btn-primary">Modifica articolo</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+    <p>Nessun articolo disponibile.</p>
+}
